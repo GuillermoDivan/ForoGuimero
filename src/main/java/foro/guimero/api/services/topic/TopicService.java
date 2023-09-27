@@ -1,5 +1,6 @@
 package foro.guimero.api.services.topic;
 
+import foro.guimero.api.domain.response.ObjectPlus;
 import foro.guimero.api.domain.topic.TopicRegisterData;
 import foro.guimero.api.domain.topic.TopicShowData;
 import foro.guimero.api.domain.topic.TopicUpdateData;
@@ -11,6 +12,6 @@ public interface TopicService {
     Page<TopicShowData> findAll(boolean active, Pageable paging);
     TopicShowData findById(Long id);
     TopicShowData update(TopicUpdateData topicUpdateData);
-    boolean toggleTopic(Long id);
+    ObjectPlus<Boolean> toggleTopic (Long id);
     boolean delete(Long id);
 }

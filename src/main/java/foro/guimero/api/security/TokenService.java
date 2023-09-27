@@ -37,7 +37,7 @@ public class TokenService {
         try {
             Algorithm algorithm = Algorithm.HMAC256(apiSecret);
             verifier = JWT.require(algorithm)
-                    .withIssuer("GuimeroForol")
+                    .withIssuer("GuimeroForo")
                     .build()
                     .verify(token);
             verifier.getSubject();

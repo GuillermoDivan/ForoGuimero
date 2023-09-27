@@ -3,6 +3,7 @@ import foro.guimero.api.security.JWTTokenData;
 import foro.guimero.api.services.authentication.AuthenticationService;
 import jakarta.validation.Valid;
 import foro.guimero.api.domain.user.UserAuthenticationData;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class AuthenticationController {
             JWTTokenData JWT = authenticationService.authenticate(userAuthenticationData);
             return ResponseEntity.ok(JWT);
         } catch (Exception ex) {
-            return null;
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
     }
 

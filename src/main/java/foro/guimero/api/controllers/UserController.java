@@ -1,6 +1,7 @@
 package foro.guimero.api.controllers;
 
 import foro.guimero.api.domain.user.*;
+import foro.guimero.api.services.authentication.AuthenticationService;
 import foro.guimero.api.services.user.UserService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -9,7 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -59,8 +59,8 @@ public class UserController {
     @Transactional
     public ResponseEntity<UserShowData> update(@RequestBody @Valid
                                                UserUpdateData userUpdateData) {
-        var loggedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (loggedUser.getId() == userUpdateData.id() || loggedUser.getRole() == Role.ADMIN) {
+        var result = this.userService.update(userUpdateData);
+        if (result != null) {
             return ResponseEntity.ok(this.userService.update(userUpdateData));
         }
         return ResponseEntity.badRequest().build();

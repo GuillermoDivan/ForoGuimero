@@ -6,11 +6,13 @@ import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.web.bind.annotation.*;
 import foro.guimero.api.services.topic.TopicService;
 import org.springframework.web.util.UriComponentsBuilder;
+
 import java.net.URI;
 
 @RestController
@@ -29,8 +31,8 @@ public class TopicController {
             (@RequestBody @Valid TopicRegisterData topicRegisterData,
              UriComponentsBuilder uriBuilder) {
         var data = this.topicService.save(topicRegisterData);
-        URI url = uriBuilder.path("/topics/id/{id}").buildAndExpand(data.id()).toUri();
-        return ResponseEntity.ok().body(data);
+        URI url = uriBuilder.path("/topics/{id}").buildAndExpand(data.id()).toUri();
+        return ResponseEntity.created(url).body(data);
     }
 
     @GetMapping
@@ -47,24 +49,31 @@ public class TopicController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TopicShowData> findTopicById(@PathVariable Long id){
+    public ResponseEntity<TopicShowData> findTopicById(@PathVariable Long id) {
         return ResponseEntity.ok(topicService.findById(id));
     }
 
     @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<TopicShowData> updateTopic(@RequestBody @Valid
-                                                     TopicUpdateData topicUpdateData){
-        return ResponseEntity.ok(this.topicService.update(topicUpdateData));
+                                                     TopicUpdateData topicUpdateData) {
+        var result = this.topicService.update(topicUpdateData);
+        if (result != null) {
+            return ResponseEntity.ok(result);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    @PostAuthorize("hasRole('ADMIN') or hasRole('MODERATOR')")
-    public ResponseEntity<Boolean> toggleTopic(@PathVariable Long id){
-        boolean toggledTopic = topicService.toggleTopic(id);
-        if (!toggledTopic){ return ResponseEntity.noContent().build();}
-        else {return ResponseEntity.ok().build();}
+    public ResponseEntity<?> toggleTopic(@PathVariable Long id) {
+        var toggledTopic = topicService.toggleTopic(id);
+        if (toggledTopic.isSuccess()) {
+            return ResponseEntity.ok(toggledTopic);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 }
 

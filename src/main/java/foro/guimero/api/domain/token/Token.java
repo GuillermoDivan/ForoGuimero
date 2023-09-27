@@ -5,9 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tokens")
+@Table(name = "Tokens")
 @Data
 @Builder
 @AllArgsConstructor
@@ -22,6 +23,7 @@ public class Token {
     private TokenType tokenType;
     private boolean expired;
     private boolean revoked;
+    private LocalDateTime creationDate = LocalDateTime.now();
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

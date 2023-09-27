@@ -1,4 +1,5 @@
 package foro.guimero.api.domain.user;
+import foro.guimero.api.domain.answer.Answer;
 import foro.guimero.api.domain.token.Token;
 import foro.guimero.api.domain.topic.Topic;
 import jakarta.persistence.*;
@@ -11,7 +12,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity(name = "User")
-@Table(name = "users")
+@Table(name = "Users")
 @Data
 @EqualsAndHashCode(of = "id")
 public class User implements UserDetails {
@@ -25,10 +26,12 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
     private boolean active;
-    @OneToMany (mappedBy = "user")
+    @OneToMany (fetch = FetchType.LAZY, mappedBy = "user")
     private List<Token> tokens;
-    @OneToMany
+    @OneToMany (fetch = FetchType.LAZY, mappedBy = "author")
     private List<Topic> topics;
+    @OneToMany (fetch = FetchType.LAZY, mappedBy = "author")
+    private List<Answer> answers;
 
     public User(UserAuthenticationData userData){
         this.username = userData.username();

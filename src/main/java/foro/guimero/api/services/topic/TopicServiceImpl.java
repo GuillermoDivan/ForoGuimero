@@ -1,23 +1,27 @@
 package foro.guimero.api.services.topic;
-import foro.guimero.api.domain.topic.Topic;
-import foro.guimero.api.domain.topic.TopicRegisterData;
-import foro.guimero.api.domain.topic.TopicShowData;
-import foro.guimero.api.domain.topic.TopicUpdateData;
-import foro.guimero.api.services.topic.TopicService;
+import foro.guimero.api.domain.response.ObjectPlus;
+import foro.guimero.api.domain.topic.*;
+import foro.guimero.api.services.authentication.AuthenticationService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import foro.guimero.api.repositories.TopicRepository;
 
+import java.time.LocalDateTime;
+
 @Service
 public class TopicServiceImpl implements TopicService {
 
     private final TopicRepository topicRepository;
+    private final AuthenticationService authenticationService;
 
-    public TopicServiceImpl(TopicRepository topicRepository) {
+    public TopicServiceImpl(TopicRepository topicRepository,
+                            AuthenticationService authenticationService) {
         this.topicRepository = topicRepository;
+        this.authenticationService = authenticationService;
     }
+
 
     @Override
     public TopicShowData save(TopicRegisterData topicRegisterData) {
@@ -29,7 +33,6 @@ public class TopicServiceImpl implements TopicService {
     @Override
     public Page<TopicShowData> findAll(boolean active, Pageable paging) {
         return this.topicRepository.findAllByActive(active, paging).map(TopicShowData::new);
-        //map transforma la colección de page entidad a page de dto show.
     }
 
     @Override
@@ -41,28 +44,38 @@ public class TopicServiceImpl implements TopicService {
 
     @Override
     public TopicShowData update(TopicUpdateData topicUpdateData) {
-        Topic newTopic = new Topic(topicUpdateData);
-        Topic oldTopic = this.topicRepository.findById(newTopic.getId()).orElse(null);
+        if (authenticationService.isAdminOrSelf(topicUpdateData.userId())) {
+            var topic = this.topicRepository.findById(topicUpdateData.id()).orElse(null);
 
-        if (oldTopic.isActive()) {
-            if (newTopic.getTitle() != null) {
-                oldTopic.setTitle(newTopic.getTitle());
+            if (topic.isActive()) {
+                if (topicUpdateData.title() != null) {
+                    topic.setTitle(topicUpdateData.title());
+                }
+                if (topicUpdateData.message() != null) {
+                    topic.setMessage(topicUpdateData.message());
+                }
+                if (topicUpdateData.status() != null) {
+                    topic.setStatus(topicUpdateData.status());
+                }
+                topic.setCreationDate(LocalDateTime.now());
+                this.topicRepository.save(topic);
             }
-            if (newTopic.getMessage() != null) {
-                oldTopic.setMessage(newTopic.getMessage());
-            }
-            if (newTopic.getStatus() != null) {
-                oldTopic.setStatus(newTopic.getStatus());
-            }
-        } return new TopicShowData(oldTopic);
+            return new TopicShowData(topic);
+        }
+        return null;
     }
 
         @Override
-        public boolean toggleTopic (Long id){
+        public ObjectPlus<Boolean> toggleTopic (Long id){
+            var result = new ObjectPlus<Boolean>();
             Topic topicToToggle = this.topicRepository.findById(id).orElse(null);
-            topicToToggle.setActive(!topicToToggle.isActive());
-            this.topicRepository.save(topicToToggle);
-            return topicToToggle.isActive();
+            if (authenticationService.isAdminModOrSelf(topicToToggle.getAuthor().getId())) {
+                topicToToggle.setActive(!topicToToggle.isActive());
+                this.topicRepository.save(topicToToggle);
+                result.setSuccess(true);
+                result.setObject(topicToToggle.isActive()); //Devuelve boolean como objeto... diferente del success.
+                return result;
+            } return result;
         }
 
         @Override

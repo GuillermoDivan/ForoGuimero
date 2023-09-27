@@ -5,7 +5,6 @@ import foro.guimero.api.services.authentication.AuthenticationService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -52,28 +51,34 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserShowData update(UserUpdateData userUpdateData) {
-        User user = new User(userUpdateData);
-        User userToUpdate = this.userRepository.findById(user.getId()).orElse(null);
-
-        if (userToUpdate.isActive()){
-            if (user.getUsername() != null) {
-                userToUpdate.setUsername(user.getUsername());
+        if (authenticationService.isAdminOrSelf(userUpdateData.id())) {
+        User userToUpdate = this.userRepository.findById(userUpdateData.id()).orElse(null);
+            if (userToUpdate.isActive()) {
+                if (userUpdateData.email() != null) {
+                    userToUpdate.setEmail(userUpdateData.email());
+                }
+                if (userUpdateData.password() != null) {
+                    userToUpdate.setPassword(passwordEncoder.encode(userUpdateData.password()));
+                }
+                this.userRepository.save(userToUpdate);
+                authenticationService.revokeAllUserTokens(userToUpdate);
             }
-            if (user.getPassword() != null) {
-                userToUpdate.setPassword(passwordEncoder.encode(user.getPassword()));
-            }
-            this.userRepository.save(userToUpdate);
-            authenticationService.revokeAllUserTokens(user);
+            return new UserShowData(userToUpdate);
         }
-
-        return new UserShowData(userToUpdate);
+        return null;
     }
 
     @Override
     public boolean toggleUser(Long id) {
-        User userToToggle = this.userRepository.findById(id).orElse(null);
-        userToToggle.setActive(!userToToggle.isActive());
-        this.userRepository.save(userToToggle);
-        return userToToggle.isActive();
+        if (authenticationService.isAdminOrSelf(id)) {
+            User userToToggle = this.userRepository.findById(id).orElse(null);
+            userToToggle.setActive(!userToToggle.isActive());
+            if (!userToToggle.isActive()) {
+                authenticationService.revokeAllUserTokens(userToToggle);
+            }
+            this.userRepository.save(userToToggle);
+            return userToToggle.isActive();
+        }
+        return false;
     }
 }
