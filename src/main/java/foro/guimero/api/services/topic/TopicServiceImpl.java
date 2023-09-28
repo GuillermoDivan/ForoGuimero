@@ -1,4 +1,5 @@
 package foro.guimero.api.services.topic;
+
 import foro.guimero.api.domain.response.ObjectPlus;
 import foro.guimero.api.domain.topic.*;
 import foro.guimero.api.services.authentication.AuthenticationService;
@@ -65,25 +66,26 @@ public class TopicServiceImpl implements TopicService {
         return null;
     }
 
-        @Override
-        public ObjectPlus<Boolean> toggleTopic (Long id){
-            var result = new ObjectPlus<Boolean>();
-            Topic topicToToggle = this.topicRepository.findById(id).orElse(null);
-            if (authenticationService.isAdminModOrSelf(topicToToggle.getAuthor().getId())) {
-                topicToToggle.setActive(!topicToToggle.isActive());
-                this.topicRepository.save(topicToToggle);
-                result.setSuccess(true);
-                result.setObject(topicToToggle.isActive()); //Devuelve boolean como objeto... diferente del success.
-                return result;
-            } return result;
+    @Override
+    public ObjectPlus<Boolean> toggleTopic(Long id) {
+        var result = new ObjectPlus<Boolean>();
+        Topic topicToToggle = this.topicRepository.findById(id).orElse(null);
+        if (authenticationService.isAdminModOrSelf(topicToToggle.getAuthor().getId())) {
+            topicToToggle.setActive(!topicToToggle.isActive());
+            this.topicRepository.save(topicToToggle);
+            result.setSuccess(true);
+            result.setObject(topicToToggle.isActive()); //Devuelve boolean como objeto... diferente del success.
+            return result;
         }
-
-        @Override
-        public boolean delete (Long id){
-            this.topicRepository.deleteById(id);
-            return true;
-        }
+        return result;
     }
+
+    @Override
+    public boolean delete(Long id) {
+        this.topicRepository.deleteById(id);
+        return true;
+    }
+}
 
 
 

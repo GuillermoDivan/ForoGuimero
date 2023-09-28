@@ -7,6 +7,6 @@ public record TopicRegisterData(
         @NotBlank String title,
         @NotBlank String message,
         @NotNull Long userId,
-        @NotBlank String course) {}
+        @NotNull Long courseId) {}
 
 

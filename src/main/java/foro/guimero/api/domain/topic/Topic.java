@@ -1,5 +1,6 @@
 package foro.guimero.api.domain.topic;
 import foro.guimero.api.domain.answer.Answer;
+import foro.guimero.api.domain.course.Course;
 import foro.guimero.api.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,7 +29,9 @@ public class Topic {
     private User author;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "topic")
     private List<Answer> answers;
-    private String course;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "course_id")
+    private Course course;
     private boolean active;
 
     public Topic(TopicRegisterData topicData){
@@ -36,7 +39,8 @@ public class Topic {
         this.message = topicData.message();
         this.author = new User();
         this.author.setId(topicData.userId());
-        this.course = topicData.course();
+        this.course = new Course();
+        this.course.setId(topicData.courseId());
         this.creationDate = LocalDateTime.now();
         this.active = true;
     }
