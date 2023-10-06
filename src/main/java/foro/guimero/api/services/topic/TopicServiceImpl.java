@@ -23,7 +23,6 @@ public class TopicServiceImpl implements TopicService {
         this.authenticationService = authenticationService;
     }
 
-
     @Override
     public TopicShowData save(TopicRegisterData topicRegisterData) {
         Topic topic = new Topic(topicRegisterData);
@@ -39,6 +38,13 @@ public class TopicServiceImpl implements TopicService {
     @Override
     public TopicShowData findById(Long id) {
         Topic topic = this.topicRepository.findByIdAndActive(id, true).
+                orElseThrow(() -> new EntityNotFoundException());
+        return new TopicShowData(topic);
+    }
+
+    @Override
+    public TopicShowData findByCourse(Long id) {
+        Topic topic = this.topicRepository.findByCourseIdAndActive(id, true).
                 orElseThrow(() -> new EntityNotFoundException());
         return new TopicShowData(topic);
     }

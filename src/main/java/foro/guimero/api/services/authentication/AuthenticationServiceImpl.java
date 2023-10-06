@@ -61,6 +61,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         tokenRepository.saveAll(validUserTokens);
     }
 
+    public boolean isSelf(Long userId) {
+        var loggedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return (loggedUser.getId() == userId);
+    }
+
     public boolean isAdminOrSelf(Long userId) {
         var loggedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return (loggedUser.getId() == userId || loggedUser.getRole() == Role.ADMIN);

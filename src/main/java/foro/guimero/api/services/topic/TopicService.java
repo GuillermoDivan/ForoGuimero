@@ -11,6 +11,7 @@ public interface TopicService {
     TopicShowData save(TopicRegisterData topicRegisterData);
     Page<TopicShowData> findAll(boolean active, Pageable paging);
     TopicShowData findById(Long id);
+    TopicShowData findByCourse(Long id);
     TopicShowData update(TopicUpdateData topicUpdateData);
     ObjectPlus<Boolean> toggleTopic (Long id);
     boolean delete(Long id);

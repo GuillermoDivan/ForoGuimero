@@ -9,6 +9,7 @@ public interface AuthenticationService {
     JWTTokenData authenticate(UserAuthenticationData userAuthenticationData);
     void savedUserToken(User savedUser, String jwtToken);
     void revokeAllUserTokens(User user);
+    boolean isSelf(Long userId);
     boolean isAdminOrSelf(Long userId);
     boolean isAdminModOrSelf(Long userId);
 }

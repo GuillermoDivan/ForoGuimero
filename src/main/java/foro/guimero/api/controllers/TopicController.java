@@ -53,6 +53,11 @@ public class TopicController {
         return ResponseEntity.ok(topicService.findById(id));
     }
 
+    @GetMapping("/course/{id}")
+    public ResponseEntity<TopicShowData> findTopicByCourse(@PathVariable Long id) {
+        return ResponseEntity.ok(topicService.findByCourse(id));
+    }
+
     @PutMapping("/{id}")
     @Transactional
     public ResponseEntity<TopicShowData> updateTopic(@RequestBody @Valid

@@ -1,4 +1,5 @@
 package foro.guimero.api.domain.answer;
+import foro.guimero.api.domain.likeAndDislike.LikeDislike;
 import foro.guimero.api.domain.topic.Topic;
 import foro.guimero.api.domain.user.User;
 import jakarta.persistence.*;
@@ -6,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "Answers")

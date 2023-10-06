@@ -1,5 +1,6 @@
 package foro.guimero.api.domain.user;
 import foro.guimero.api.domain.answer.Answer;
+import foro.guimero.api.domain.likeAndDislike.LikeDislike;
 import foro.guimero.api.domain.token.Token;
 import foro.guimero.api.domain.topic.Topic;
 import jakarta.persistence.*;

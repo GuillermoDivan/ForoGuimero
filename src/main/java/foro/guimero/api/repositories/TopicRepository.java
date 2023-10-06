@@ -12,5 +12,6 @@ import java.util.Optional;
 public interface TopicRepository extends JpaRepository<Topic, Long> {
     Page<Topic> findAllByActive(boolean active, Pageable paging);
     Optional<Topic> findByIdAndActive(Long id, Boolean active);
+    Optional<Topic> findByCourseIdAndActive(Long id, Boolean active);
 
 }
