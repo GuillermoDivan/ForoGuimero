@@ -71,6 +71,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return (loggedUser.getId() == userId || loggedUser.getRole() == Role.ADMIN);
     }
 
+    public boolean isAdminOrMod(Long userId) {
+        var loggedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return (loggedUser.getRole() == Role.ADMIN || loggedUser.getRole() == Role.MODERATOR);
+    }
+
     public boolean isAdminModOrSelf(Long userId) {
         var loggedUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return (loggedUser.getId() == userId || loggedUser.getRole() == Role.ADMIN || loggedUser.getRole() == Role.MODERATOR);

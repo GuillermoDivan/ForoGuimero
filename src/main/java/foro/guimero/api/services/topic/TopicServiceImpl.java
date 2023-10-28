@@ -26,7 +26,7 @@ public class TopicServiceImpl implements TopicService {
     @Override
     public TopicShowData save(TopicRegisterData topicRegisterData) {
         Topic topic = new Topic(topicRegisterData);
-        this.topicRepository.save(topic); //"Se llama al método save del repository pasando la entidad a guardar"
+        this.topicRepository.save(topic);
         return new TopicShowData(topic);
     }
 
@@ -36,23 +36,30 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public TopicShowData findById(Long id) {
-        Topic topic = this.topicRepository.findByIdAndActive(id, true).
-                orElseThrow(() -> new EntityNotFoundException());
+    public Page<TopicShowData> findByTopicByIsLiked(Long userId, boolean isLiked, Pageable paging) {
+        return this.topicRepository.findByTopicByIsLiked(userId, isLiked, paging).map(TopicShowData::new);
+    }
+
+    @Override
+    public TopicShowData findById(Long id) throws EntityNotFoundException {
+        Topic topic = this.topicRepository.findByIdAndActive(id, true)
+                .orElseThrow(EntityNotFoundException::new);
         return new TopicShowData(topic);
     }
 
     @Override
-    public TopicShowData findByCourse(Long id) {
-        Topic topic = this.topicRepository.findByCourseIdAndActive(id, true).
-                orElseThrow(() -> new EntityNotFoundException());
+    public TopicShowData findByCourse(Long id) throws EntityNotFoundException {
+        Topic topic = this.topicRepository.findByCourseIdAndActive(id, true)
+               .orElseThrow(EntityNotFoundException::new);
         return new TopicShowData(topic);
     }
 
     @Override
-    public TopicShowData update(TopicUpdateData topicUpdateData) {
+    public TopicShowData update(TopicUpdateData topicUpdateData)
+            throws EntityNotFoundException {
         if (authenticationService.isAdminOrSelf(topicUpdateData.userId())) {
-            var topic = this.topicRepository.findById(topicUpdateData.id()).orElse(null);
+            var topic = this.topicRepository.findById(topicUpdateData.id())
+                    .orElseThrow(EntityNotFoundException::new);
 
             if (topic.isActive()) {
                 if (topicUpdateData.title() != null) {
@@ -73,9 +80,10 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public ObjectPlus<Boolean> toggleTopic(Long id) {
+    public ObjectPlus<Boolean> toggleTopic(Long id) throws EntityNotFoundException {
         var result = new ObjectPlus<Boolean>();
-        Topic topicToToggle = this.topicRepository.findById(id).orElse(null);
+        Topic topicToToggle = this.topicRepository.findById(id)
+                .orElseThrow(EntityNotFoundException::new);
         if (authenticationService.isAdminModOrSelf(topicToToggle.getAuthor().getId())) {
             topicToToggle.setActive(!topicToToggle.isActive());
             this.topicRepository.save(topicToToggle);

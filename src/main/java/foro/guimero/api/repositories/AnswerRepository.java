@@ -16,4 +16,10 @@ public interface AnswerRepository extends JpaRepository<Answer, Long> {
 
     @Query("Select A From Answer A where A.topic.id =:topicId")
     Page<Answer> findAllByTopic(Long topicId, Pageable paging);
+
+    @Query(""" 
+            SELECT L.answer FROM LikeDislike L 
+            WHERE L.isLiked = :isLiked  AND L.user.id = :userId
+            """)
+    Page<Answer> findByAnswerByIsLiked(Long userId, boolean isLiked, Pageable paging);
 }

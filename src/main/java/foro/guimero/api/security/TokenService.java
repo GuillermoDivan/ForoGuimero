@@ -16,12 +16,14 @@ public class TokenService {
 
     @Value("${api.security.secret}") //Conecta a ApplicationPropperties para tomar la key de encriptado desde una ubicación segura.
     private String apiSecret;
+    @Value("${api.security.issuer}")
+    private String apiIssuer;
 
     public String generateToken(User user){
         try {
             Algorithm algorithm = Algorithm.HMAC256(apiSecret);
             return JWT.create()
-                    .withIssuer("GuimeroForo")
+                    .withIssuer(apiIssuer)
                     .withSubject(user.getUsername()) //User.
                     .withClaim("id", user.getId()) //Encadena info necesaria, ej username o mail.
                     .withExpiresAt(generateExpirationDate())
@@ -37,7 +39,7 @@ public class TokenService {
         try {
             Algorithm algorithm = Algorithm.HMAC256(apiSecret);
             verifier = JWT.require(algorithm)
-                    .withIssuer("GuimeroForo")
+                    .withIssuer(apiIssuer)
                     .build()
                     .verify(token);
             verifier.getSubject();

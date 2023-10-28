@@ -1,5 +1,6 @@
 package foro.guimero.api.services.topic;
 
+import foro.guimero.api.domain.answer.AnswerShowData;
 import foro.guimero.api.domain.response.ObjectPlus;
 import foro.guimero.api.domain.topic.TopicRegisterData;
 import foro.guimero.api.domain.topic.TopicShowData;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 public interface TopicService {
     TopicShowData save(TopicRegisterData topicRegisterData);
     Page<TopicShowData> findAll(boolean active, Pageable paging);
+    Page<TopicShowData> findByTopicByIsLiked(Long userId, boolean isLiked, Pageable paging);
     TopicShowData findById(Long id);
     TopicShowData findByCourse(Long id);
     TopicShowData update(TopicUpdateData topicUpdateData);

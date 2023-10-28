@@ -2,6 +2,7 @@ package foro.guimero.api.services.likeDislike;
 import foro.guimero.api.domain.likeAndDislike.*;
 import foro.guimero.api.repositories.LikeDislikeRepository;
 import foro.guimero.api.services.authentication.AuthenticationService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
@@ -35,10 +36,11 @@ public class LikeDislikeServiceImpl implements LikeDislikeService{
     }
 
     @Override
-    public LikeDislikeShowData update(LikeDislikeUpdateData likeDislikeUpdateData) {
+    public LikeDislikeShowData update(LikeDislikeUpdateData likeDislikeUpdateData)
+            throws EntityNotFoundException {
        if (authenticationService.isSelf(likeDislikeUpdateData.userId())) {
             var likeDislike = this.likeDislikeRepository.findById(likeDislikeUpdateData.id())
-                    .orElse(null);
+                    .orElseThrow(EntityNotFoundException::new);
             likeDislike.setLiked(likeDislikeUpdateData.isLiked());
             likeDislike.setDate(LocalDateTime.now());
             this.likeDislikeRepository.save(likeDislike);

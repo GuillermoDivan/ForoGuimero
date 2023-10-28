@@ -11,5 +11,6 @@ public interface AuthenticationService {
     void revokeAllUserTokens(User user);
     boolean isSelf(Long userId);
     boolean isAdminOrSelf(Long userId);
+    boolean isAdminOrMod(Long userId);
     boolean isAdminModOrSelf(Long userId);
 }

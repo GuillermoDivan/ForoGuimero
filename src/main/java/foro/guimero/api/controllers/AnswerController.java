@@ -1,6 +1,7 @@
 package foro.guimero.api.controllers;
 
 import foro.guimero.api.domain.answer.*;
+import foro.guimero.api.domain.likeAndDislike.LikeDislikeShowData;
 import foro.guimero.api.services.answer.AnswerService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -62,6 +63,18 @@ public class AnswerController {
     @GetMapping("/{id}")
     public ResponseEntity<AnswerShowData> findAnswerById(@PathVariable Long id){
         return ResponseEntity.ok(answerService.findById(id));
+    }
+
+    @GetMapping("/user/{userId}/likes")
+    ResponseEntity<Page<AnswerShowData>> findLikedAnswerList
+            (@PathVariable Long userId, @PageableDefault(size = 3) Pageable paging) {
+        return ResponseEntity.ok(answerService.findByAnswerByIsLiked(userId,true, paging));
+    }
+
+    @GetMapping("/user/{userId}/dislikes")
+    ResponseEntity<Page<AnswerShowData>> findDislikedAnswerList
+            (@PathVariable Long userId, @PageableDefault(size = 3) Pageable paging) {
+        return ResponseEntity.ok(answerService.findByAnswerByIsLiked(userId,false, paging));
     }
 
     @PutMapping("/{id}")

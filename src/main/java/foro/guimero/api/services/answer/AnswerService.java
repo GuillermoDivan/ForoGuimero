@@ -10,6 +10,7 @@ public interface AnswerService {
     Page<AnswerShowData> findAllByUsername(String username, Pageable paging);
     Page<AnswerShowData> findAllByTopic(Long topicId, Pageable paging);
     Page<AnswerShowData> findAll(boolean active, Pageable paging);
+    Page<AnswerShowData> findByAnswerByIsLiked(Long userId, boolean isLiked, Pageable paging);
     AnswerShowData findById(Long id);
     AnswerShowData update(AnswerUpdateData answerUpdateData);
     ObjectPlus<Boolean> toggleAnswer (Long id);

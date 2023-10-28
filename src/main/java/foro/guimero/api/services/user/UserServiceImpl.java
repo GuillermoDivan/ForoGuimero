@@ -43,16 +43,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserShowData findById(Long id) {
-        User user = this.userRepository.findById(id).
-                orElseThrow(() -> new EntityNotFoundException());
+    public UserShowData findById(Long id) throws EntityNotFoundException {
+        User user = this.userRepository.findById(id)
+        .orElseThrow(EntityNotFoundException::new);
         return new UserShowData(user);
     }
 
     @Override
-    public UserShowData update(UserUpdateData userUpdateData) {
+    public UserShowData update(UserUpdateData userUpdateData) throws EntityNotFoundException {
         if (authenticationService.isAdminOrSelf(userUpdateData.id())) {
-        User userToUpdate = this.userRepository.findById(userUpdateData.id()).orElse(null);
+        User userToUpdate = this.userRepository.findById(userUpdateData.id())
+                .orElseThrow(EntityNotFoundException::new);
             if (userToUpdate.isActive()) {
                 if (userUpdateData.email() != null) {
                     userToUpdate.setEmail(userUpdateData.email());
@@ -69,9 +70,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean toggleUser(Long id) {
+    public boolean toggleUser(Long id) throws EntityNotFoundException {
         if (authenticationService.isAdminOrSelf(id)) {
-            User userToToggle = this.userRepository.findById(id).orElse(null);
+            User userToToggle = this.userRepository.findById(id)
+                    .orElseThrow(EntityNotFoundException::new);
             userToToggle.setActive(!userToToggle.isActive());
             if (!userToToggle.isActive()) {
                 authenticationService.revokeAllUserTokens(userToToggle);

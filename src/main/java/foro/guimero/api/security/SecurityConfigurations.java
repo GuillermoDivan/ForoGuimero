@@ -37,8 +37,7 @@ public class SecurityConfigurations {
         this.logoutHandler = logoutHandler;
     }
 
-    @Bean
-        //@Bean funciona como autowired para esta porción de código.
+    @Bean //@Bean funciona como autowired para esta porción de código.
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity)
             throws Exception {
         return httpSecurity

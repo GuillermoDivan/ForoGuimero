@@ -1,10 +1,14 @@
 package foro.guimero.api.controllers;
+import foro.guimero.api.domain.answer.AnswerShowData;
 import foro.guimero.api.domain.likeAndDislike.LikeDislikeRegisterData;
 import foro.guimero.api.domain.likeAndDislike.LikeDislikeShowData;
 import foro.guimero.api.domain.likeAndDislike.LikeDislikeUpdateData;
 import foro.guimero.api.services.likeDislike.LikeDislikeService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

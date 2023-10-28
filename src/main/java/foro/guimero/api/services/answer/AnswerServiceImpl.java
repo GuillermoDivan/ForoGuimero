@@ -3,6 +3,7 @@ import foro.guimero.api.domain.answer.*;
 import foro.guimero.api.domain.response.ObjectPlus;
 import foro.guimero.api.repositories.AnswerRepository;
 import foro.guimero.api.services.authentication.AuthenticationService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,11 @@ public class AnswerServiceImpl implements AnswerService{
     }
 
     @Override
+    public Page<AnswerShowData> findByAnswerByIsLiked(Long userId, boolean isLiked, Pageable paging) {
+        return this.answerRepository.findByAnswerByIsLiked(userId, isLiked, paging).map(AnswerShowData::new);
+    }
+
+    @Override
     public Page<AnswerShowData> findAllByUsername(String username, Pageable paging){
         return this.answerRepository.findAllByUsername(username, paging).map(AnswerShowData::new);
     }
@@ -44,15 +50,15 @@ public class AnswerServiceImpl implements AnswerService{
     }
 
     @Override
-    public AnswerShowData findById(Long id) {
-        var showData = this.answerRepository.findById(id).orElse(null);
+    public AnswerShowData findById(Long id) throws EntityNotFoundException {
+        var showData = this.answerRepository.findById(id).orElseThrow(EntityNotFoundException::new);
         return new AnswerShowData(showData);
     }
 
     @Override
-    public AnswerShowData update(AnswerUpdateData answerUpdateData) {
+    public AnswerShowData update(AnswerUpdateData answerUpdateData) throws EntityNotFoundException {
         if (authenticationService.isAdminModOrSelf(answerUpdateData.userId())) {
-            var answer = this.answerRepository.findById(answerUpdateData.id()).orElse(null);
+            var answer = this.answerRepository.findById(answerUpdateData.id()).orElseThrow(EntityNotFoundException::new);
             if (answer.isActive()) {
                 answer.setMessage(answerUpdateData.message());
                 answer.setCreationDate(LocalDateTime.now());
@@ -63,9 +69,9 @@ public class AnswerServiceImpl implements AnswerService{
     }
 
     @Override
-    public ObjectPlus<Boolean> toggleAnswer (Long id) {
+    public ObjectPlus<Boolean> toggleAnswer (Long id) throws EntityNotFoundException {
         var result = new ObjectPlus<Boolean>();
-        Answer answerToToggle = this.answerRepository.findById(id).orElse(null);
+        Answer answerToToggle = this.answerRepository.findById(id).orElseThrow(EntityNotFoundException::new);
         if (authenticationService.isAdminOrSelf(answerToToggle.getAuthor().getId())) {
         answerToToggle.setActive(!answerToToggle.isActive());
         this.answerRepository.save(answerToToggle);

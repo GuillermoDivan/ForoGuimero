@@ -28,21 +28,21 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public CourseShowData findById(Long id) {
+    public CourseShowData findById(Long id) throws EntityNotFoundException {
         return new CourseShowData(this.courseRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException()));
+                .orElseThrow(EntityNotFoundException::new));
     }
 
     @Override
-    public CourseShowData findByName(String name) {
+    public CourseShowData findByName(String name) throws EntityNotFoundException {
         return new CourseShowData(this.courseRepository.findByName(name)
-                .orElseThrow(() -> new EntityNotFoundException()));
+                .orElseThrow(EntityNotFoundException::new));
     }
 
     @Override
-    public CourseShowData update(CourseUpdateData courseUpdateData) {
+    public CourseShowData update(CourseUpdateData courseUpdateData) throws EntityNotFoundException {
             var course = this.courseRepository.findById(courseUpdateData.id())
-                    .orElseThrow(() -> new EntityNotFoundException());
+                    .orElseThrow(EntityNotFoundException::new);
             if (course.isActive()){
                 course.setName(courseUpdateData.name());
                 this.courseRepository.save(course);
@@ -51,10 +51,10 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public ObjectPlus<Boolean> toggleCourse(Long id) {
+    public ObjectPlus<Boolean> toggleCourse(Long id) throws EntityNotFoundException {
         var result = new ObjectPlus<Boolean>();
-        Course courseToToggle = this.courseRepository.findById(id).
-                orElseThrow(() -> new EntityNotFoundException());
+        Course courseToToggle = this.courseRepository.findById(id)
+                .orElseThrow(EntityNotFoundException::new);
             courseToToggle.setActive(!courseToToggle.isActive());
             this.courseRepository.save(courseToToggle);
             result.setSuccess(true);

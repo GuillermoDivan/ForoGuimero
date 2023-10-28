@@ -1,5 +1,4 @@
 package foro.guimero.api.domain.likeAndDislike;
-
 import java.time.LocalDateTime;
 
 public record LikeDislikeShowData(Long id, Long answerId,

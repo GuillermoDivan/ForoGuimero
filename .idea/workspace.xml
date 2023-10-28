@@ -5,35 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b85fd5fa-1261-484e-a02d-244792f3af8b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/controllers/LikeDislikeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/likeAndDislike/LikeDislike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/likeAndDislike/LikeDislikeRegisterData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/likeAndDislike/LikeDislikeShowData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/likeAndDislike/LikeDislikeUpdateData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/topic/Status.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/repositories/LikeDislikeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/likeDislike/LikeDislikeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/likeDislike/LikeDislikeServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/controllers/AnswerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/controllers/AnswerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/controllers/LikeDislikeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/controllers/LikeDislikeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/controllers/TopicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/controllers/TopicController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/answer/Answer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/answer/Answer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/topic/Topic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/topic/Topic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/topic/TopicShowData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/topic/TopicShowData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/topic/TopicUpdateData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/topic/TopicUpdateData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/user/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/likeAndDislike/LikeDislikeRegisterData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/likeAndDislike/LikeDislikeRegisterData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/likeAndDislike/LikeDislikeShowData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/likeAndDislike/LikeDislikeShowData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/repositories/AnswerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/repositories/AnswerRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/repositories/TopicRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/repositories/TopicRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/security/SecurityConfigurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/security/SecurityConfigurations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/security/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/security/TokenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/answer/AnswerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/answer/AnswerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/answer/AnswerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/answer/AnswerServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/authentication/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/authentication/AuthenticationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/authentication/AuthenticationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/authentication/AuthenticationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/course/CourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/course/CourseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/likeDislike/LikeDislikeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/likeDislike/LikeDislikeServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/topic/TopicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/topic/TopicService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/topic/TopicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/topic/TopicServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/foro/guimero/api/controllers/TopicController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/foro/guimero/api/controllers/TopicController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/foro/guimero/api/domain/topic/Topic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/foro/guimero/api/domain/topic/Topic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/foro/guimero/api/domain/topic/TopicUpdateData.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/foro/guimero/api/domain/topic/TopicUpdateData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/foro/guimero/api/domain/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/foro/guimero/api/domain/user/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/foro/guimero/api/repositories/TopicRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/foro/guimero/api/repositories/TopicRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/user/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/user/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/foro/guimero/api/security/SecurityConfigurations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/foro/guimero/api/security/SecurityConfigurations.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/foro/guimero/api/services/authentication/AuthenticationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/foro/guimero/api/services/authentication/AuthenticationService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/foro/guimero/api/services/authentication/AuthenticationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/foro/guimero/api/services/authentication/AuthenticationServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/foro/guimero/api/services/topic/TopicService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/foro/guimero/api/services/topic/TopicService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,17 +130,6 @@
       <updated>1695034561416</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/foro/guimero/api/security/TokenService.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
