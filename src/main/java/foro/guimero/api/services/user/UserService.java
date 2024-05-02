@@ -10,4 +10,5 @@ public interface UserService {
     UserShowData findById(Long id);
     UserShowData update(UserUpdateData userUpdateData);
     boolean toggleUser(Long id);
+    boolean delete (Long id);
 }

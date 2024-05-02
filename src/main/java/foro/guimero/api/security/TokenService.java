@@ -14,7 +14,7 @@ import java.time.ZoneOffset;
 @Service
 public class TokenService {
 
-    @Value("${api.security.secret}") //Conecta a ApplicationPropperties para tomar la key de encriptado desde una ubicación segura.
+    @Value("${api.security.secret}") //Conecta a ApplicationProperties para tomar la key de encriptado desde una ubicación segura.
     private String apiSecret;
     @Value("${api.security.issuer}")
     private String apiIssuer;

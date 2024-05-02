@@ -1,4 +1,4 @@
-package foro.guimero.api.services.course;
+package foro.guimero.api.services.answer.course;
 
 import foro.guimero.api.domain.course.*;
 import foro.guimero.api.domain.response.ObjectPlus;
@@ -12,5 +12,6 @@ public interface CourseService {
    CourseShowData findByName(String name);
     CourseShowData update(CourseUpdateData courseUpdateData);
     ObjectPlus<Boolean> toggleCourse (Long id);
+    boolean delete(Long id);
 
 }

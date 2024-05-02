@@ -1,6 +1,6 @@
 package foro.guimero.api.controllers;
 import foro.guimero.api.domain.course.*;
-import foro.guimero.api.services.course.CourseService;
+import foro.guimero.api.services.answer.course.CourseService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;

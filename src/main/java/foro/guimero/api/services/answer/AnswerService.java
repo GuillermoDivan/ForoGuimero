@@ -14,4 +14,5 @@ public interface AnswerService {
     AnswerShowData findById(Long id);
     AnswerShowData update(AnswerUpdateData answerUpdateData);
     ObjectPlus<Boolean> toggleAnswer (Long id);
+    boolean delete (Long id);
 }

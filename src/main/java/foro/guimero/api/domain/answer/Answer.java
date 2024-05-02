@@ -1,4 +1,5 @@
 package foro.guimero.api.domain.answer;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import foro.guimero.api.domain.likeAndDislike.LikeDislike;
 import foro.guimero.api.domain.topic.Topic;
 import foro.guimero.api.domain.user.User;
@@ -20,6 +21,7 @@ public class Answer {
     private Long id;
     //@Column (unique = true)
     private String message;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDateTime creationDate;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")

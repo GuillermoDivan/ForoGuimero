@@ -8,4 +8,5 @@ public interface LikeDislikeService {
     Long countByAnswerByIsLiked(Long answerId, boolean isLiked);
     Long countByTopicByIsLiked(Long topicId, boolean isLiked);
     LikeDislikeShowData update(LikeDislikeUpdateData likeDislikeUpdateData);
+    boolean delete(Long id);
 }

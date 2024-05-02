@@ -1,4 +1,4 @@
-package foro.guimero.api.services.course;
+package foro.guimero.api.services.answer.course;
 import foro.guimero.api.domain.course.*;
 import foro.guimero.api.domain.response.ObjectPlus;
 import foro.guimero.api.repositories.CourseRepository;
@@ -59,5 +59,11 @@ public class CourseServiceImpl implements CourseService{
             this.courseRepository.save(courseToToggle);
             result.setSuccess(true);
             result.setObject(courseToToggle.isActive());return result;
+    }
+
+    @Override
+    public boolean delete(Long id) {
+        this.courseRepository.deleteById(id);
+        return true;
     }
 }

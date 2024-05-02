@@ -6,9 +6,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Service
 public class ReportServiceImpl implements ReportService{
@@ -67,4 +65,11 @@ public class ReportServiceImpl implements ReportService{
             return new ReportShowData(report);
         } return null;
     }
+
+    @Override
+    public boolean delete(Long id) {
+        this.reportRepository.deleteById(id);
+        return true;
+    }
+
 }

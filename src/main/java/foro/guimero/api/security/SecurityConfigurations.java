@@ -37,7 +37,7 @@ public class SecurityConfigurations {
         this.logoutHandler = logoutHandler;
     }
 
-    @Bean //@Bean funciona como autowired para esta porción de código.
+    @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity)
             throws Exception {
         return httpSecurity
@@ -57,7 +57,6 @@ public class SecurityConfigurations {
                 //Logout is deprecated without lambda!!
                 .logout((logout) -> logout.logoutUrl("/logout").addLogoutHandler(logoutHandler)
                         .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext()))
-
                 .userDetailsService(userDetailsService)
                 .build();
     }

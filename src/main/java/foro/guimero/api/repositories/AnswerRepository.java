@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface AnswerRepository extends JpaRepository<Answer, Long> {
     Page<Answer> findAllByActive(Boolean active, Pageable paging);
 
-    //Las queries se hacen siempre llamando a la entidad (cuidar caps, singular, etc).
     @Query("Select A From Answer A where A.author.username =:username")
     Page<Answer> findAllByUsername(String username, Pageable paging);
 

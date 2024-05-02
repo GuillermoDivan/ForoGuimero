@@ -6,29 +6,28 @@
   <component name="ChangeListManager">
     <list default="true" id="b85fd5fa-1261-484e-a02d-244792f3af8b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/controllers/AnswerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/controllers/AnswerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/controllers/LikeDislikeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/controllers/LikeDislikeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/controllers/TopicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/controllers/TopicController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/likeAndDislike/LikeDislikeRegisterData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/likeAndDislike/LikeDislikeRegisterData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/likeAndDislike/LikeDislikeShowData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/likeAndDislike/LikeDislikeShowData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/controllers/CourseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/controllers/CourseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/answer/Answer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/domain/answer/Answer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/repositories/AnswerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/repositories/AnswerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/repositories/TopicRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/repositories/TopicRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/security/SecurityConfigurations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/security/SecurityConfigurations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/security/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/security/TokenService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/answer/AnswerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/answer/AnswerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/answer/AnswerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/answer/AnswerServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/authentication/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/authentication/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/authentication/AuthenticationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/authentication/AuthenticationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/course/CourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/course/CourseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/course/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/answer/course/CourseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/course/CourseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/answer/course/CourseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/likeDislike/LikeDislikeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/likeDislike/LikeDislikeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/likeDislike/LikeDislikeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/likeDislike/LikeDislikeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/topic/TopicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/topic/TopicService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/topic/TopicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/topic/TopicServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/report/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/report/ReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/report/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/report/ReportServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/user/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/user/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foro/guimero/api/services/user/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/foro/guimero/api/security/SecurityConfigurations.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/foro/guimero/api/security/SecurityConfigurations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/foro/guimero/api/services/authentication/AuthenticationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/foro/guimero/api/services/authentication/AuthenticationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/foro/guimero/api/services/authentication/AuthenticationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/foro/guimero/api/services/authentication/AuthenticationServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/foro/guimero/api/security/TokenService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/foro/guimero/api/security/TokenService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/foro/guimero/api/services/user/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/foro/guimero/api/services/user/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/foro/guimero/api/services/user/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/foro/guimero/api/services/user/UserServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,13 +50,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="workspaceImportEnabled" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
   <component name="ProjectId" id="2VZD9llbc6QTeKcVNxjHWvq3OSb" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -66,15 +61,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Guille/Desktop/LetsCode/Showing off/hotel.guimero.api&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;file.status.colors&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Guille/Desktop/com.junit",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.general"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="foro.guimero.api.domain.course" />

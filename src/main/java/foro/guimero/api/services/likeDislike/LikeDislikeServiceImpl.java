@@ -48,4 +48,10 @@ public class LikeDislikeServiceImpl implements LikeDislikeService{
         } return null;
     }
 
+    @Override
+    public boolean delete(Long id) {
+        this.likeDislikeRepository.deleteById(id);
+        return true;
+    }
+
 }

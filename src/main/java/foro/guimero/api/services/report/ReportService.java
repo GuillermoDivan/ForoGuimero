@@ -17,4 +17,5 @@ public interface ReportService {
     Page<ReportShowData> findAllByStatus(Status status, Pageable paging);
     ReportShowData findById(Long id);
     ReportShowData update(ReportUpdateData ReportUpdateData);
+    boolean delete(Long id);
 }

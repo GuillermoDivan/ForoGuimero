@@ -1,7 +1,6 @@
 package foro.guimero.api.controllers;
 
 import foro.guimero.api.domain.answer.*;
-import foro.guimero.api.domain.likeAndDislike.LikeDislikeShowData;
 import foro.guimero.api.services.answer.AnswerService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
