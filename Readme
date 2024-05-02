@@ -1,0 +1,50 @@
+**La descripción en español se encuentra más abajo en este mismo archivo.**
+
+This project was inspired by a bootcamp challenge! The goal was to make an api emulating a forum website, developed in Java languaje with Spring Boot granting the connection. Some other dependecies were added (lombok for other annotations, auth0 for token managments, etc). It used Mysql as database and Hibernate as ORM (object relationship manager).
+
+The structure of this project started with "Topic" and "User" classes as the challenge suggested. In order to make a more realistic and complete api, it was necessary to add "Answer" and "Course" classes. "Token" class was needed for security purposes, and "LikeAndDislike" and "Report" were made to provide a most full experience, near to a real forum possibilities of interaction and as a way to keep the forum spam and violence/discrimination-free. Lastly, "Response" class, still in progress, was made to unify responses and provide just one type of object in every case.
+
+Besides the entities, domain layer had Enum classes and DTOs: one for registering, other for showing and a third one for updating. Despite the fact that permanent delete procedures were included on services implementations, the delete process applied was a "logic delete", meaning every object has its own boolean attribute for turning on/off if needed. This decision was made in order to keep the integrity of the data registered in database on a production phase, but still having the option to remove for good registers if they were made on a testing phase.
+
+On the other hand, repositories of all entities extended from JPARepository, making easier the task of persisting/finding data in database. Specific queries were added to guarantee some system functions.
+
+Services layer was developed as an interface for each domain, then implemented by others. The idea behind that was to avoid coupling and allow scalability if needed. The service implementation of each entity injected the repository of the same entity via constructor, in order to avoid @Autowired annotations. These implementations overrided the interfaces methods, always returning showing DTO's (single or paging) except for toggle cases, where a “Response” object was returned, with the purpose of unifying responses. As a further goal, it was planned to apply that strategy in every controller.
+
+Controllers layer (also made one for each entity) injected dependencies from services in order to return not only a response entity status to the client but also the showing DTOs.
+
+Regarding API security, “SecurityConfigurations” established the security filter chain, based on the premise that it is a stateless application (this means that no logs of client connections are kept). However, to guarantee its security, the JWT system was used.
+Access to certain specific requests was enabled to allow user registration and login, as well as the use of the Swagger library for documentation purposes. For any other request, its authenticity was verified.
+
+That process was carried out through the JWT system, which applies a key registered in application.properties and an algorithm generation system to encrypt the user's id and username in a token. A duration of 48 hours was programmed for the validity of the tokens and an automatic expiration in case of resetting the password.
+
+Lastly, the “Security filter” class was responsible for verifying that each request made to the API had the corresponding token, and both it and the associated user were valid.
+Additionally, user roles were verified to allow/deny the made requests.
+
+Thanks for reading. Constructive feedback is always wellcome!
+
+
+*******
+
+
+¡Este proyecto surgió de un desafío de un Bootcamp! El objetivo propuesto fue realizar una API que emulara un foro web, en lenguaje Java y con Spring Boot como agente de conexión. Se agregaron algunas otras dependencias (lombok para otras anotaciones, auth0 para administraciones de tokens, etc). Como base de datos se utilizó mysql y Hibernate como ORM (object relationship manager / Administrador de relaciones de objetos).
+
+La estructura de este proyecto comenzó con las clases "Topic" y "User", dominios sugeridos por el desafío. Para hacer una API más realista y completa, fue necesario agregar las clases "Answer" y "Course". La clase "Token" fue imprescindible por motivos de seguridad, y "LikeAndDislike" y "Report" se crearon para proporcionar una experiencia más completa, cercana a las posibilidades reales de interacción de un foro y como una forma de mantener el foro libre de spam y violencia/discriminación. Por último, se creó la clase "Response", aún en desarrollo, para unificar respuestas y proporcionar un solo tipo de objeto en todos los casos.
+
+Además de las entidades, la capa de dominio incluyó clases Enum y DTOs (Data Transfer Objects / Objetos de transferencia de información): uno para registrar, otro para mostrar y un tercero para actualizar. A pesar de que se incluyeron procedimientos de eliminación permanente en las implementaciones de los servicios, el proceso de eliminación aplicado fue una "eliminación lógica", lo que significa que cada objeto tiene su propio atributo booleano para activarlo/desactivarlo si fuera necesario. Esta decisión se tomó para mantener la integridad de los datos registrados en la base de datos en una fase de producción, pero conservando la opción de eliminar definitivamente los registros realizados en una fase de prueba.
+
+Por otro lado, los repositorios de todas las entidades se extendieron desde JPARepository, facilitando la tarea de persistir/encontrar datos en la base de datos. Se agregaron queries personalizadas para garantizar determinadas funciones del sistema.
+
+La capa de servicios se desarrolló como interfases para cada dominio, luego implementadas por otras. La idea detrás de eso fue evitar el acoplamiento y garantizar la escalabilidad en caso de ser necesaria. La implementación del servicio de cada entidad inyectó el repositorio correspondiente a través de constructores, para evitar anotaciones @Autowired. Estas implementaciones sobreescribieron los métodos de las interfases y siempre devolvieron DTOs para mostrar información (objetos únicos o paginación), excepto en los casos de eliminación/reactivación, donde se devolvió objeto del tipo “Response”, específicamente hecho para unificar las respuestas. Como objetivo próximo se planteó el expandir tal estrategia de devolución a todos los controladores.
+
+La capa de controladores (también hecha una por cada entidad) inyectó dependencias de los servicios con el propósito de devolver al cliente no solo el estado de la petición, sino también los DTOs para mostrar información.
+
+En lo referente a la seguridad de la API, “SecurityConfigurations” estableció la cadena de filtros de seguridad, partiendo de la premisa de que se trata de una aplicación stateless (esto significa que no se guardan registros de las conexiones de los clientes). No obstante, para garantizar la seguridad de la misma se empleó el sistema JWT.
+
+Se habilitaron el acceso a ciertas peticiones específicas para permitir el registro e ingreso del usuario a la aplicación, así como el uso de la librería Swagger con fines de documentación. Ante cualquier otra petición, se verificó su autenticidad.
+
+Tal proceso se realizó a través del sistema JWT, que aplica una clave registrada en application.properties y un sistema de generación de algoritmos para encriptar en un token el id y el username del usuario. Se programó una duración de 48hs a la validez de los tokens y un vencimiento automático en caso de restablecer contraseña.
+
+Por último, la clase “Security filter” fue la encargada de verificar que cada petición hecha a la API tuviera el correspondiente token, y tanto éste como el usuario asociado fueran válidos.
+Adicionalmente, se verificaron roles de usuario para permitir/denegar las peticiones realizadas.
+
+Gracias por su atención. Bienvenidos los comentarios constructivos!
